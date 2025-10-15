@@ -38,6 +38,7 @@ def get_connection():<br>
         password="123",<br>
         database="sales_final_db"<br>
     )
+```
 <br><br>
 - Establishes a connection to MySQL database.<br>
 <br>
@@ -150,3 +151,4 @@ Developed by Ritika Bhasin, IT Student, IPU '28.
 Built using Streamlit, Pandas, Matplotlib, and MySQL.
 <br>
 Inspired by real-world retail analytics requirements for interactive sales monitoring.
+
