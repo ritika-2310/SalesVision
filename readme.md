@@ -43,7 +43,6 @@ def get_connection():<br>
 - Establishes a connection to MySQL database.
 <br><br>
 #Data Upload and Preview
-<br>
 - Users can upload CSV or Excel files via st.file_uploader.
 <br>
 - The uploaded data is previewed using st.dataframe.
@@ -149,4 +148,5 @@ streamlit run app.py
 - Built using Streamlit, Pandas, Matplotlib, and MySQL.
 <br>
 - Inspired by real-world retail analytics requirements for interactive sales monitoring.
+
 
