@@ -25,7 +25,6 @@ This project demonstrates:<br>
 - **Responsive Design**: Layout automatically adjusts with wide-screen configuration for better visualization.<br>
 ## Code Walkthrough & Function Descriptions
 ### Database Connection
-<br>
 ```python
 @st.cache_resource
 def get_connection():
@@ -36,6 +35,7 @@ def get_connection():
         database="sales_final_db"
     )
 ```
+<br>
 - Uses st.cache_resource to avoid reconnecting on every run.<br>
 - Establishes a connection to MySQL database.
 <br>
@@ -145,4 +145,5 @@ streamlit run app.py
 - Built using Streamlit, Pandas, Matplotlib, and MySQL.
 <br>
 - Inspired by real-world retail analytics requirements for interactive sales monitoring.
+
 
