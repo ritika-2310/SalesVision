@@ -39,7 +39,7 @@ def get_connection():
 - Uses st.cache_resource to avoid reconnecting on every run.<br>
 - Establishes a connection to MySQL database.<br>
 <br>
-#Data Upload and Preview
+#Data Upload and Preview<br>
 - The uploaded data is previewed using st.dataframe.
 <br>
 - Users can upload CSV or Excel files via st.file_uploader.
@@ -145,6 +145,7 @@ streamlit run app.py
 - Built using Streamlit, Pandas, Matplotlib, and MySQL.
 <br>
 - Inspired by real-world retail analytics requirements for interactive sales monitoring.
+
 
 
 
