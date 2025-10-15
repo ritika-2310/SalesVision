@@ -1,5 +1,4 @@
 # Retail Sales Dashboard
-<br><br>
 This project is an interactive **Retail Sales Dashboard** built using Streamlit and MySQL. It allows users to upload sales data in CSV or Excel format, cleans and processes the data, stores it in a MySQL database, and provides various analytics and visualizations to understand sales performance. The dashboard also enables filtering, trend analysis, and downloading of both data and visual charts for further reporting.
 <br><br>
 This project demonstrates:<br>
@@ -10,7 +9,6 @@ This project demonstrates:<br>
 - File handling and export (CSV/Excel/PNG)<br>
 - Basic metrics computation and year-over-year growth analysis<br>
 - User-friendly UI with sidebar filters and tabs for visualization<br>
-<br><br>
 ## Features<br>
 - **Upload Data**: Users can upload sales datasets in CSV or Excel format. The data is previewed immediately on the dashboard.<br>
 - **Data Cleaning**: Automatic cleaning of column names, conversion of numeric columns, date parsing, removal of duplicates, and handling of missing critical data like Address or Order Quantity.<br>
@@ -25,25 +23,23 @@ This project demonstrates:<br>
   - **State-wise Revenue**: Bar chart showing revenue distribution by state.<br>
 - **Export Options**: Filtered datasets can be downloaded as CSV or Excel. Charts can also be downloaded as PNG images.<br>
 - **Responsive Design**: Layout automatically adjusts with wide-screen configuration for better visualization.<br>
-<br><br>
 ## Code Walkthrough & Function Descriptions
-<br><br>
-### Database Connection<br>
-```python<br>
-@st.cache_resource<br>
-def get_connection():<br>
-    return mysql.connector.connect(<br>
-        host="localhost",<br>
-        user="root",<br>
-        password="123",<br>
-        database="sales_final_db"<br>
+### Database Connection
+<br>
+```python
+@st.cache_resource
+def get_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="123",
+        database="sales_final_db"
     )
 ```
 - Uses st.cache_resource to avoid reconnecting on every run.<br>
 - Establishes a connection to MySQL database.
-<br><br>
-#Data Upload and Preview
 <br>
+#Data Upload and Preview
 - The uploaded data is previewed using st.dataframe.
 <br>
 - Users can upload CSV or Excel files via st.file_uploader.
@@ -149,3 +145,4 @@ streamlit run app.py
 - Built using Streamlit, Pandas, Matplotlib, and MySQL.
 <br>
 - Inspired by real-world retail analytics requirements for interactive sales monitoring.
+
