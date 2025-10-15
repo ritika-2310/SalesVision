@@ -9,6 +9,8 @@ This project demonstrates:<br>
 - File handling and export (CSV/Excel/PNG)<br>
 - Basic metrics computation and year-over-year growth analysis<br>
 - User-friendly UI with sidebar filters and tabs for visualization<br>
+## URL for streamlit website deployed
+- URL : https://salesvisionanalytics.streamlit.app/
 ## Features<br>
 - **Upload Data**: Users can upload sales datasets in CSV or Excel format. The data is previewed immediately on the dashboard.<br>
 - **Data Cleaning**: Automatic cleaning of column names, conversion of numeric columns, date parsing, removal of duplicates, and handling of missing critical data like Address or Order Quantity.<br>
@@ -145,6 +147,7 @@ streamlit run app.py
 - Built using Streamlit, Pandas, Matplotlib, and MySQL.
 <br>
 - Inspired by real-world retail analytics requirements for interactive sales monitoring.
+
 
 
 
