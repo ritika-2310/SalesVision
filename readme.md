@@ -59,12 +59,10 @@ def get_connection():
 - Computes unit_price as revenue divided by order quantity.
 <br><br>
 #Data Loading<br>
-```python
 @st.cache_data<br>
 def load_data():<br>
     query = "SELECT * FROM sales"<br>
     return pd.read_sql(query, conn)
-```
 <br>
 - Fetches cleaned data from the database.
 <br>
