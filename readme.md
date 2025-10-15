@@ -39,7 +39,6 @@ def get_connection():<br>
         database="sales_final_db"<br>
     )
 ```
-<br><br>
 - Establishes a connection to MySQL database.<br>
 <br>
 - Uses st.cache_resource to avoid reconnecting on every run.
@@ -151,4 +150,5 @@ Developed by Ritika Bhasin, IT Student, IPU '28.
 Built using Streamlit, Pandas, Matplotlib, and MySQL.
 <br>
 Inspired by real-world retail analytics requirements for interactive sales monitoring.
+
 
