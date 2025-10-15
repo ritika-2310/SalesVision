@@ -1,0 +1,37 @@
+# Core Dashboard & Web
+<br><br>
+streamlit>=1.30.0<br>
+plotly>=5.16.1<br>
+matplotlib>=3.7.1<br>
+seaborn>=0.12.2<br>
+<br><br>
+# Data Handling
+<br><br>
+pandas>=2.0.3<br>
+numpy>=1.26.0<br>
+openpyxl>=3.1.2<br>
+XlsxWriter>=3.1.2<br>
+xlrd>=2.0.1<br>
+<br><br>
+# Database Connectivity
+<br><br>
+mysql-connector-python>=8.1.0<br>
+SQLAlchemy>=2.0.25<br>
+<br><br>
+# Date & Time Utilities
+<br><br>
+python-dateutil>=2.8.2<br>
+<br><br>
+# Interactive Features
+<br><br>
+ipywidgets>=8.1.0<br>
+<br><br>
+# Optional for advanced analytics
+<br><br>
+scipy>=1.11.1<br>
+statsmodels>=0.14.0<br>
+<br><br>
+# Environment & Utilities
+<br><br>
+python-dotenv>=1.0.1<br>
+requests>=2.32.0<br>
