@@ -39,11 +39,10 @@ def get_connection():<br>
         database="sales_final_db"<br>
     )
 ```
-- Establishes a connection to MySQL database.<br>
-<br>
-- Uses st.cache_resource to avoid reconnecting on every run.
+- Uses st.cache_resource to avoid reconnecting on every run.<br>
+- Establishes a connection to MySQL database.
 <br><br>
-Data Upload and Preview
+# Data Upload and Preview
 <br>
 - Users can upload CSV or Excel files via st.file_uploader.
 <br>
@@ -51,7 +50,7 @@ Data Upload and Preview
 <br>
 - If the database table exists, it truncates previous data before inserting new rows.
 <br><br>
-Data Cleaning (clean(df))
+# Data Cleaning (clean(df))
 <br>
 - Strips whitespaces from column names.
 <br>
@@ -63,7 +62,7 @@ Data Cleaning (clean(df))
 <br>
 - Computes unit_price as revenue divided by order quantity.
 <br><br>
-Data Loading<br>
+# Data Loading<br>
 @st.cache_data<br>
 def load_data():<br>
     query = "SELECT * FROM sales"<br>
@@ -73,7 +72,7 @@ def load_data():<br>
 <br>
 - Uses caching to improve performance for repeated queries.
 <br><br>
-Metrics Calculation
+# Metrics Calculation
 <br>
 - Total Revenue: Sum of revenue column.
 <br>
@@ -83,19 +82,19 @@ Metrics Calculation
 <br>
 - Yearly Growth: Percentage growth compared to previous year.
 <br><br>
-Sidebar Filters
+# Sidebar Filters
 <br>
 - Select Year and Month to filter data dynamically.
 <br>
 - Choose a date range using a date picker to analyze specific periods.
 <br><br>
-Download Filtered Data
+# Download Filtered Data
 <br>
 - Filtered datasets can be exported as CSV or Excel.
 <br>
 - Charts for monthly trends, top products, and state revenue can be downloaded as PNG files.
 <br><br>
-Visualizations
+# Visualizations
 <br>
 1. Monthly Trend: Line chart with markers showing month-wise revenue.
 <br>
@@ -103,7 +102,7 @@ Visualizations
 <br>
 3. State-wise Revenue: Bar chart showing top 10 states by revenue.
 <br><br>
-Tabs
+# Tabs
 <br>
 - Visualizations are organized in three tabs for a clean, navigable dashboard interface:
 <br>
@@ -113,7 +112,7 @@ Tabs
 <br>
 3. State-wise Revenue
 <br><br>
-How to Run
+# How to Run
 <br>
 1. Ensure MySQL is installed and running.
 <br>
@@ -131,24 +130,22 @@ streamlit run app.py
 <br>
 6. Use sidebar filters to analyze data and download reports or charts as needed.
 <br><br>
-Future Improvements
+# Future Improvements
 <br>
-Add user authentication to restrict access to authorized personnel.
+- Add user authentication to restrict access to authorized personnel.
 <br>
-Include interactive visualizations using Plotly for better insights.
+- Include interactive visualizations using Plotly for better insights.
 <br>
-Implement historical comparison with rolling trends and YoY/ MoM growth charts.
+- Implement historical comparison with rolling trends and YoY/ MoM growth charts.
 <br>
-Add predictive analytics for sales forecasting.
+- Add predictive analytics for sales forecasting.
 <br>
-Enhance dashboard with more metrics like top customers, order priority analysis, and profit margin trends.
+- Enhance dashboard with more metrics like top customers, order priority analysis, and profit margin trends.
 <br><br>
-Credits
+# Credits
 <br>
-Developed by Ritika Bhasin, IT Student, IPU '28.
+- Developed by Ritika Bhasin, IT Student, IPU '28.
 <br>
-Built using Streamlit, Pandas, Matplotlib, and MySQL.
+- Built using Streamlit, Pandas, Matplotlib, and MySQL.
 <br>
-Inspired by real-world retail analytics requirements for interactive sales monitoring.
-
-
+- Inspired by real-world retail analytics requirements for interactive sales monitoring.
