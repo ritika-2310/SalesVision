@@ -11,8 +11,6 @@ This project demonstrates:<br>
 - Basic metrics computation and year-over-year growth analysis<br>
 - User-friendly UI with sidebar filters and tabs for visualization<br>
 <br><br>
----
-<br><br>
 ## Features<br>
 - **Upload Data**: Users can upload sales datasets in CSV or Excel format. The data is previewed immediately on the dashboard.<br>
 - **Data Cleaning**: Automatic cleaning of column names, conversion of numeric columns, date parsing, removal of duplicates, and handling of missing critical data like Address or Order Quantity.<br>
@@ -28,8 +26,6 @@ This project demonstrates:<br>
 - **Export Options**: Filtered datasets can be downloaded as CSV or Excel. Charts can also be downloaded as PNG images.<br>
 - **Responsive Design**: Layout automatically adjusts with wide-screen configuration for better visualization.<br>
 <br><br>
----
-<br><br>
 ## Code Walkthrough & Function Descriptions
 <br><br>
 ### Database Connection<br>
@@ -42,7 +38,7 @@ def get_connection():<br>
         password="123",<br>
         database="sales_final_db"<br>
     )
-<br>
+<br><br>
 - Establishes a connection to MySQL database.<br>
 <br>
 - Uses st.cache_resource to avoid reconnecting on every run.
