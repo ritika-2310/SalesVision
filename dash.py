@@ -76,23 +76,23 @@ def load_data(df):
 if uploaded_file is not None:
     df = load_data(df)
     st.success(f"Number of rows loaded from database: {len(df)}")
-
-#4th column metric
-# Convert date column
-df['Order Date'] = pd.to_datetime(df['Order Date'])
-df['Year'] = df['Order Date'].dt.year
-df['Month'] = df['Order Date'].dt.month
-# Yearly revenue
-yearly_revenue = df.groupby('Year')['revenue'].sum().sort_index()
-# Calculate YoY Growth (%)
-yoy_growth = yearly_revenue.pct_change().fillna(0) * 100
-# Latest year comparison
-latest_year = yearly_revenue.index.max()
-prev_year = latest_year - 1
-#latest_revenue = yearly_revenue[str(latest_year)]
-latest_revenue = yearly_revenue.get(latest_year, 0)
-previous_revenue = yearly_revenue.get(prev_year, 0)
-growth_percent = ((latest_revenue - previous_revenue) / previous_revenue * 100) if previous_revenue != 0 else 0
+if uploaded_file is not None:
+ #4th column metric
+ # Convert date column
+ df['Order Date'] = pd.to_datetime(df['Order Date'])
+ df['Year'] = df['Order Date'].dt.year
+ df['Month'] = df['Order Date'].dt.month
+ # Yearly revenue
+ yearly_revenue = df.groupby('Year')['revenue'].sum().sort_index()
+ # Calculate YoY Growth (%)
+ yoy_growth = yearly_revenue.pct_change().fillna(0) * 100
+ # Latest year comparison
+ latest_year = yearly_revenue.index.max()
+ prev_year = latest_year - 1
+ #latest_revenue = yearly_revenue[str(latest_year)]
+ latest_revenue = yearly_revenue.get(latest_year, 0)
+ previous_revenue = yearly_revenue.get(prev_year, 0)
+ growth_percent = ((latest_revenue - previous_revenue) / previous_revenue * 100) if previous_revenue != 0 else 0
 
 #sidebar filters
 st.sidebar.header("filters")
@@ -217,3 +217,4 @@ with tab3:
 st.markdown("----")
 
 st.caption("<div style='text-align:center;color:gray;'>""© 2025 Retail Sales Analytics Built with Streamlit & MySQL""</div>",unsafe_allow_html=True)
+
