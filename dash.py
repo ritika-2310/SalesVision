@@ -1,24 +1,12 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
-import mysql.connector
+#import mysql.connector
 import io
 from io import BytesIO
 from IPython.display import display
 import numpy as np
 from datetime import date
-
-#database connection
-@st.cache_resource
-def get_connection():
-    return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="123",
-        database="sales_final_db"
-    )
-conn = get_connection()
-cursor = conn.cursor()
 
 #page configuration
 st.set_page_config(page_title="retail sales dashboard",layout="wide")
@@ -26,45 +14,6 @@ st.title("retail sales dashboard")
 
 uploaded_file = st.file_uploader("choose a file",type=['csv','xlsx'])
 if uploaded_file is not None:
-    cursor = conn.cursor()
-    create_table_query = """
-    CREATE TABLE IF NOT EXISTS sales (
-    `Order No` VARCHAR(50),
-    `Order Date` DATE,
-    `Customer Name` VARCHAR(100),
-    `Address` VARCHAR(255),
-    `City` VARCHAR(100),
-    `State` VARCHAR(100),
-    `Customer Type` VARCHAR(50),
-    `Account Manager` VARCHAR(100),
-    `Order Priority` VARCHAR(20),
-    `Product Name` VARCHAR(150),
-    `Product Category` VARCHAR(100),
-    `Product Container` VARCHAR(100),
-    `Ship Mode` VARCHAR(50),
-    `Ship Date` DATE,
-    `Cost Price` FLOAT,
-    `Retail Price` FLOAT,
-    `Profit Margin` FLOAT,
-    `Order Quantity` INT,
-    `Sub Total` FLOAT,
-    `Discount %` FLOAT,
-    `Discount $` FLOAT,
-    `Order Total` FLOAT,
-    `Shipping Cost` FLOAT,
-    `Total` FLOAT,
-    `revenue` FLOAT,
-    `year` INT,
-    `month` INT,
-    `month_name` VARCHAR(20),
-    `ym` VARCHAR(20),
-    `quarter` VARCHAR(10),
-    `unit_price` FLOAT
-    );
-    """
-    cursor.execute(create_table_query)
-    cursor.execute("TRUNCATE TABLE sales")
-    conn.commit()
     st.success("file uploaded successfully")
     if uploaded_file.name.endswith('csv'):
         df = pd.read_csv(uploaded_file)
@@ -119,73 +68,14 @@ def clean(df):
     df['unit_price'] = df['revenue'] / df['Order Quantity']
 
     return df
-
-if uploaded_file is not None:
-    df = clean(df)
-    #data loading in mysql 
-    cursor.execute("CREATE DATABASE IF NOT EXISTS sales_final_db")
-    cursor.execute("USE sales_final_db")
-    print("databse created sales_final_db and selected")
-    #Create table with exact same columns as your CSV with same order
-    create_table_query = """
-    CREATE TABLE IF NOT EXISTS sales (
-    `Order No` VARCHAR(50),
-    `Order Date` DATE,
-    `Customer Name` VARCHAR(100),
-    `Address` VARCHAR(255),
-    `City` VARCHAR(100),
-    `State` VARCHAR(100),
-    `Customer Type` VARCHAR(50),
-    `Account Manager` VARCHAR(100),
-    `Order Priority` VARCHAR(20),
-    `Product Name` VARCHAR(150),
-    `Product Category` VARCHAR(100),
-    `Product Container` VARCHAR(100),
-    `Ship Mode` VARCHAR(50),
-    `Ship Date` DATE,
-    `Cost Price` FLOAT,
-    `Retail Price` FLOAT,
-    `Profit Margin` FLOAT,
-    `Order Quantity` INT,
-    `Sub Total` FLOAT,
-    `Discount %` FLOAT,
-    `Discount $` FLOAT,
-    `Order Total` FLOAT,
-    `Shipping Cost` FLOAT,
-    `Total` FLOAT,
-    `revenue` FLOAT,
-    `year` INT,
-    `month` INT,
-    `month_name` VARCHAR(20),
-    `ym` VARCHAR(20),
-    `quarter` VARCHAR(10),
-    `unit_price` FLOAT
-    );
-    """
-    cursor.execute(create_table_query)
-    print("\nTable 'sales' created.")
-    #insert data from csv to mysql
-    cols = ','.join([f"`{col}`" for col in df.columns])
-    placeholder = ','.join(["%s"]*len(df.columns))
-    insert_query = f"INSERT INTO sales({cols}) VALUES ({placeholder})"
-    #convert all nans to none in mysql and also all data into rows of numpy
-    data_tuple = [tuple(None if pd.isna(val) else val for val in row) for row in df.to_numpy()] #sublists in lists
-    #insertion in chunks should be done like insert 500 rows first then another 500 rows till then 1000 would be inserted continue with gap of 500 rows each time
-    for i in range(0,len(data_tuple),500):
-        cursor.executemany(insert_query,data_tuple[i:i+500])
-        conn.commit()
-    print("\nall data inserted successfully.")
-
 #data loading
 @st.cache_data
-def load_data():
-    query = """SELECT * FROM  sales"""
-    return pd.read_sql(query,conn)
+def load_data(df):
+    df = clean(df)
+    return df
 if uploaded_file is not None:
-    df = load_data()
+    df = load_data(df)
     st.success(f"Number of rows loaded from database: {len(df)}")
-else:
-    df = load_data()
 
 #4th column metric
 # Convert date column
@@ -325,4 +215,5 @@ with tab3:
     )
 
 st.markdown("----")
+
 st.caption("<div style='text-align:center;color:gray;'>""© 2025 Retail Sales Analytics Built with Streamlit & MySQL""</div>",unsafe_allow_html=True)
