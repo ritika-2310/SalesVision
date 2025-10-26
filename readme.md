@@ -26,20 +26,6 @@ This project demonstrates:<br>
 - **Export Options**: Filtered datasets can be downloaded as CSV or Excel. Charts can also be downloaded as PNG images.<br>
 - **Responsive Design**: Layout automatically adjusts with wide-screen configuration for better visualization.<br>
 ## Code Walkthrough & Function Descriptions
-### Database Connection
-```python
-@st.cache_resource
-def get_connection():
-    return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="123",
-        database="sales_final_db"
-    )
-```
-<br>
-- Uses st.cache_resource to avoid reconnecting on every run.<br>
-- Establishes a connection to MySQL database.<br>
 <br>
 #Data Upload and Preview<br>
 - The uploaded data is previewed using st.dataframe.
@@ -59,16 +45,6 @@ def get_connection():
 - Removes duplicate rows and rows with missing critical data.
 <br>
 - Computes unit_price as revenue divided by order quantity.
-<br><br>
-#Data Loading<br>
-@st.cache_data<br>
-def load_data():<br>
-    query = "SELECT * FROM sales"<br>
-    return pd.read_sql(query, conn)
-<br>
-- Fetches cleaned data from the database.
-<br>
-- Uses caching to improve performance for repeated queries.
 <br><br>
 #Metrics Calculation
 <br>
@@ -112,21 +88,17 @@ def load_data():<br>
 <br><br>
 #How to Run
 <br>
-1. Ensure MySQL is installed and running.
+1. Install required Python libraries:
 <br>
-2. Update the MySQL credentials in app.py (host, user, password).
+pip install streamlit pandas matplotlib xlsxwriter openpyxl
 <br>
-3. Install required Python libraries:
-<br>
-pip install streamlit pandas matplotlib mysql-connector-python xlsxwriter openpyxl
-<br>
-4. Run the Streamlit app:
+2. Run the Streamlit app:
 <br>
 streamlit run app.py
 <br>
-5. Open the local URL provided by Streamlit and upload your sales dataset.
+3. Open the local URL provided by Streamlit and upload your sales dataset.
 <br>
-6. Use sidebar filters to analyze data and download reports or charts as needed.
+4. Use sidebar filters to analyze data and download reports or charts as needed.
 <br><br>
 #Future Improvements
 <br>
@@ -147,9 +119,3 @@ streamlit run app.py
 - Built using Streamlit, Pandas, Matplotlib, and MySQL.
 <br>
 - Inspired by real-world retail analytics requirements for interactive sales monitoring.
-
-
-
-
-
-
