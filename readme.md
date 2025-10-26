@@ -116,6 +116,7 @@ streamlit run app.py
 <br>
 - Developed by Ritika Bhasin, IT Student, IPU '28.
 <br>
-- Built using Streamlit, Pandas, Matplotlib, and MySQL.
+- Built using Streamlit, Pandas and Matplotlib.
 <br>
 - Inspired by real-world retail analytics requirements for interactive sales monitoring.
+
