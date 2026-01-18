@@ -13,6 +13,7 @@ This project demonstrates:<br>
 - URL : https://salesvisionanalytics.streamlit.app/
 ## Features<br>
 - **Upload Data**: Users can upload sales datasets in CSV or Excel format. The data is previewed immediately on the dashboard.<br>
+For eg use file https://docs.google.com/spreadsheets/d/1Qkub7Cp89sKWn-YD_MZoAtq4HGaqZgip/edit?usp=drive_link&ouid=114153048439204878396&rtpof=true&sd=true
 - **Data Cleaning**: Automatic cleaning of column names, conversion of numeric columns, date parsing, removal of duplicates, and handling of missing critical data like Address or Order Quantity.<br>
 - **Revenue Calculation**: Total revenue is calculated from the "Total" column and stored as a new column `revenue`.<br>
 - **Date Feature Engineering**: Generates additional date-related columns including year, month, month name, quarter, and year-month combination.<br>
@@ -119,4 +120,5 @@ streamlit run app.py
 - Built using Streamlit, Pandas and Matplotlib.
 <br>
 - Inspired by real-world retail analytics requirements for interactive sales monitoring.
+
 
